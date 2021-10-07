@@ -13,7 +13,7 @@ class Cat extends Animals {
     }
 
     public boolean getIsWellFed() {
-        return isWellFed;
+        return this.isWellFed;
     }
 
     public void eatFromPlate(Plate plate) {
