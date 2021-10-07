@@ -21,7 +21,7 @@ package xiii.geekbrains.java_pre_course.lesson_5;
 public class Zadanie_5 {
     public static void main(String[] args) {
 
-        Plate plate1 = new Plate(150);
+        Plate plate1 = new Plate(140);
         plate1.getFoodInside();
 
         Cat[] cats = new Cat[10];
@@ -38,121 +38,17 @@ public class Zadanie_5 {
 
         for (int i = 0; i < cats.length; i++) {
             while (true) {
-                System.out.println(cats[i].name + " сытый: " + cats[i].wellFed);
+                System.out.println(cats[i].getName() + " сытый: " + cats[i].getIsWellFed());
                 cats[i].eatFromPlate(plate1);
-                System.out.println(cats[i].name + " сытый: " + cats[i].wellFed);
-                System.out.println("В миске осталось: " + plate1.foodInside + " единиц еды");
+                System.out.println(cats[i].getName() + " сытый: " + cats[i].getIsWellFed());
+                System.out.println("В миске осталось: " + plate1.getFoodInside() + " единиц еды");
                 System.out.println();
-                if (!cats[i].wellFed) {
-                    plate1.putFoodInside(cats[i].foodToWellFed);
+                if (!cats[i].getIsWellFed()) {
+                    plate1.putFoodInside(cats[i].getFoodToWellFed());
                     continue;
                 }
                 break;
             }
         }
-    }
-}
-
-
-class Animals {
-    int distanceOfRun;
-    int distanceOfSwim;
-    double hight;
-    String name;
-
-    public void run(int distance) {
-        if (distance > this.distanceOfRun) {
-            System.out.println(this.name + ": run: " + distance + ": false");
-        } else {
-            System.out.println(this.name + ": run: " + distance + ": true");
-        }
-    }
-
-    public void swim(int distance) {
-        if (distance > this.distanceOfSwim) {
-            System.out.println(this.name + ": swim: " + distance + ": false");
-        } else {
-            System.out.println(this.name + ": swim: " + distance + ": true");
-        }
-    }
-
-    public void jump(int hight) {
-        if (hight > this.hight) {
-            System.out.println(this.name + ": jump: " + hight + ": false");
-        } else {
-            System.out.println(this.name + ": jump: " + hight + ": true");
-        }
-    }
-
-    public void jump(double hight) {
-        if (hight > this.hight) {
-            System.out.println(this.name + ": jump: " + hight + ": false");
-        } else {
-            System.out.println(this.name + ": jump: " + hight + ": true");
-        }
-    }
-}
-
-class Cat extends Animals {
-    boolean wellFed = false; //сытый
-    int foodToWellFed; // сколько единиц еды надо съесть, чтобы быть сытым
-
-    public Cat(String name, int foodToWellFed) {
-        this.name = name;
-        this.foodToWellFed = foodToWellFed;
-        this.distanceOfRun = 200;
-        this.distanceOfSwim = 0;
-        this.hight = 2;
-    }
-
-    public boolean isWellFed() {
-        this.wellFed = true;
-        return wellFed;
-    }
-
-    public void eatFromPlate(Plate plate) {
-        if ((plate.foodInside - this.foodToWellFed) < 0) {
-            System.out.println(this.name + " хочет " + this.foodToWellFed + " единиц еды и не наестся из этой миски");
-        } else {
-            this.isWellFed();
-            plate.foodInside -= this.foodToWellFed;
-            System.out.println(this.name + " съел " + this.foodToWellFed + " единиц еды и наелся");
-        }
-    }
-}
-
-class Dog extends Animals {
-    public Dog(String name) {
-        this.name = name;
-        this.distanceOfRun = (int) (400 + Math.random() * 201);
-        this.distanceOfSwim = 10;
-        this.hight = 0.5;
-    }
-}
-
-class Plate {
-    int maxVolume;
-    int foodInside = 0;
-
-    public Plate(int maxVolume) {
-        this.maxVolume = maxVolume;
-    }
-
-    public void putFoodInside(int foodInside) {
-        if ((this.foodInside + foodInside) > this.maxVolume) {
-            System.out.println(foodInside + " единиц еды в миску не влезет");
-        } else {
-            this.foodInside += foodInside;
-            System.out.println("Добавили единиц еды: " + foodInside + ". Сейчас в миске " + this.foodInside + " единиц еды");
-        }
-    }
-
-    public int getFoodInside() {
-        if (foodInside < 1) {
-            System.out.println("Миска пустая, необходимо ее наполнить");
-            this.putFoodInside(this.maxVolume);
-            System.out.println();
-        }
-        return this.foodInside;
     }
 }
