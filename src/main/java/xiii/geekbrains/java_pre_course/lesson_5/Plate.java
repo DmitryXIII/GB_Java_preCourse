@@ -1,4 +1,5 @@
 package xiii.geekbrains.java_pre_course.lesson_5;
+
 class Plate {
     private int maxVolume;
     private int foodInside = 0;

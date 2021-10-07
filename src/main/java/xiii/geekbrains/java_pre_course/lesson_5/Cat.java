@@ -1,7 +1,7 @@
 package xiii.geekbrains.java_pre_course.lesson_5;
 
 class Cat extends Animals {
-    private boolean isWellFed = false; //сытый
+    private boolean isWellFed = false; //по умолчанию кот рождается голодным
     private int foodToWellFed; // сколько единиц еды надо съесть, чтобы быть сытым
 
     public Cat(String name, int foodToWellFed) {
