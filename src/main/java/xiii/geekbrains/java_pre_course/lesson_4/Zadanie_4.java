@@ -33,7 +33,7 @@ public class Zadanie_4 {
         personArray[3] = new Person("Кузнецов Петр Иванович", 35, "Системный администратор", "kuznetcov@gmail.com", "89031234564", 70000);
         personArray[4] = new Person("Глушко Юрий Венедиктович", 51, "Заместитель директора", "glushko@gmail.com", "89041234563", 80000);
         for (int i = 0; i < personArray.length; i++) {
-            if (personArray[i].age > 39) {
+            if (personArray[i].getAge() > 39) {
                 System.out.println("Сотрудник:");
                 Person.printPerson(personArray[i]);
                 System.out.println();

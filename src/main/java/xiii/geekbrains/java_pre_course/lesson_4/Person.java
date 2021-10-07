@@ -1,12 +1,12 @@
 package xiii.geekbrains.java_pre_course.lesson_4;
 
 public class Person {
-    protected String name;
-    protected int age;
-    protected String position;
-    protected String eMail;
-    protected String phoneNumber;
-    protected int salary;
+    private String name;
+    private int age;
+    private String position;
+    private String eMail;
+    private String phoneNumber;
+    private int salary;
 
     public Person(String name, int age, String position, String eMail, String phoneNumber, int salary) {
         this.name = name;
@@ -24,5 +24,9 @@ public class Person {
         System.out.println("eMail: " + person.eMail);
         System.out.println("телефон: " + person.phoneNumber);
         System.out.println("зарплата: " + person.salary);
+    }
+
+    public int getAge() {
+        return age;
     }
 }
