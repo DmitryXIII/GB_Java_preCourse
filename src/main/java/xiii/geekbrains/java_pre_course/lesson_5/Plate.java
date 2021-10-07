@@ -25,14 +25,6 @@ class Plate {
         return this.foodInside;
     }
 
-    public int getMaxVolume() {
-        return maxVolume;
-    }
-
-    public void setMaxVolume(int maxVolume) {
-        this.maxVolume = maxVolume;
-    }
-
     public void setFoodInside(int foodInside) {
         this.foodInside = foodInside;
     }

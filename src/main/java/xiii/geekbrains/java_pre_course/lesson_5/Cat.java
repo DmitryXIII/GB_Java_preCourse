@@ -13,7 +13,6 @@ class Cat extends Animals {
     }
 
     public boolean getIsWellFed() {
-        this.isWellFed = true;
         return isWellFed;
     }
 
@@ -21,21 +20,13 @@ class Cat extends Animals {
         if ((plate.getFoodInside() - this.foodToWellFed) < 0) {
             System.out.println(this.getName() + " хочет " + this.foodToWellFed + " единиц еды и не наестся из этой миски");
         } else {
-            this.getIsWellFed();
+            this.isWellFed = true;
             plate.setFoodInside(plate.getFoodInside() - this.foodToWellFed);
             System.out.println(this.getName() + " съел " + this.foodToWellFed + " единиц еды и наелся");
         }
     }
 
-    public void setWellFed(boolean wellFed) {
-        this.isWellFed = wellFed;
-    }
-
     public int getFoodToWellFed() {
         return foodToWellFed;
-    }
-
-    public void setFoodToWellFed(int foodToWellFed) {
-        this.foodToWellFed = foodToWellFed;
     }
 }
