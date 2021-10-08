@@ -5,10 +5,10 @@ class Cat extends Animals {
     private int foodToWellFed; // сколько единиц еды надо съесть, чтобы быть сытым
 
     public Cat(String name, int foodToWellFed) {
-        setName(name);
-        setDistanceOfRun(200);
-        setDistanceOfSwim(0);
-        setHight(2);
+        this.name = name;
+        this.distanceOfRun = 200;
+        this.distanceOfSwim = 0;
+        this.hight = 2;
         this.foodToWellFed = foodToWellFed;
     }
 

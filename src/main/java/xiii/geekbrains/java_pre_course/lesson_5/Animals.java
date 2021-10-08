@@ -1,10 +1,10 @@
 package xiii.geekbrains.java_pre_course.lesson_5;
 
 class Animals {
-    private int distanceOfRun;
-    private int distanceOfSwim;
-    private double hight;
-    private String name;
+    protected int distanceOfRun;
+    protected int distanceOfSwim;
+    protected double hight;
+    protected String name;
 
     public void run(int distance) {
         if (distance > this.distanceOfRun) {
