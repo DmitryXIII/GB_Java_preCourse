@@ -82,7 +82,7 @@ public class GameBoard extends JFrame {
     boolean isTurnable(int x, int y) {
         boolean result = false;
 
-        if (gameField[y][x] == nullSymbol) {
+        if (gameField[x][y] == nullSymbol) {
             result = true;
         }
 
@@ -90,7 +90,7 @@ public class GameBoard extends JFrame {
     }
 
     void updateGameField(int x, int y) {
-        gameField[y][x] = game.getCurrentPlayer().getPlayerSign();
+        gameField[x][y] = game.getCurrentPlayer().getPlayerSign();
     }
 
     char getGameField(int x, int y) {
