@@ -48,14 +48,12 @@ public class GameActionListener implements ActionListener {
     private void updateByAiData(GameBoard board) {
         if (!board.isEmpty()) {
             int x, y;
-            //Random rnd = new Random();
             do {
                 x = getTurnCoords(board)[0];
                 y = getTurnCoords(board)[1];
             } while (!board.isTurnable(x, y));
 
             board.updateGameField(x, y);
-            System.out.println(x + " " + y);
             int cellIndex = GameBoard.dimension * x + y;
             board.getButton(cellIndex).setText(Character.toString(board.getGame().getCurrentPlayer().getPlayerSign()));
 
@@ -76,15 +74,15 @@ public class GameActionListener implements ActionListener {
         int[] turnCoords = new int[2];
         Random rnd = new Random();
         while (true) {
-//ход в центр
+
+            //ход в центр
             if (board.getGameField(1, 1) == GameBoard.getNullSymbol()) {
                 x = 1;
                 y = 1;
                 break;
             }
-            /**
-             * проверка строк на победные комбинации
-             */
+
+            //проверка строк на победные комбинации
             for (int i = 0; i < 3; i++) {
                 int lineAIWeight = 0;
                 for (int j = 0; j < 3; j++) {
@@ -105,6 +103,7 @@ public class GameActionListener implements ActionListener {
                 }
                 if (isTurnDone == 1) break;
             }
+
             //проверка колонок на победные комбинации
             for (int i = 0; i < 3; i++) {
                 int columnAIWeight = 0;
@@ -126,9 +125,8 @@ public class GameActionListener implements ActionListener {
                 }
                 if (isTurnDone == 1) break;
             }
-            /**
-             * проверка диагонали 1 на победные комбинации
-             */
+
+            //проверка диагонали 1 на победные комбинации
             int diagonal_1_AIWeight = 0;
             for (int i = 0; i < 3; i++) {
                 if (board.getGameField(i, i) == board.getGame().getCurrentPlayer().getPlayerSign()) {
@@ -148,9 +146,7 @@ public class GameActionListener implements ActionListener {
             }
             if (isTurnDone == 1) break;
 
-            /**
-             * проверка диагонали 2 на победные комбинации
-             */
+            //проверка диагонали 2 на победные комбинации
             int diagonal_2_AIWeight = 0;
             for (int i = 0; i < 3; i++) {
                 if (board.getGameField(i, (2 - i)) == board.getGame().getCurrentPlayer().getPlayerSign()) {
@@ -170,7 +166,7 @@ public class GameActionListener implements ActionListener {
             }
             if (isTurnDone == 1) break;
 
-// проверка строк на необходимость закрыть победную комбинацию соперника
+            // проверка строк на необходимость закрыть победную комбинацию соперника
             for (int i = 0; i < 3; i++) {
                 int lineUserWeight = 0;
                 for (int j = 0; j < 3; j++) {
@@ -216,7 +212,7 @@ public class GameActionListener implements ActionListener {
             }
             if (isTurnDone == 1) break;
 
-// проверка диагонали 1 на необходимость закрыть победную комбинацию соперника
+            // проверка диагонали 1 на необходимость закрыть победную комбинацию соперника
             int diagonal_1_UserWeight = 0;
             for (int i = 0; i < 3; i++) {
                 if (board.getGameField(i, i) == 'X') {
@@ -237,7 +233,7 @@ public class GameActionListener implements ActionListener {
             }
             if (isTurnDone == 1) break;
 
-// проверка диагонали 2 на необходимость закрыть победную комбинацию соперника
+            // проверка диагонали 2 на необходимость закрыть победную комбинацию соперника
             int diagonal_2_UserWeight = 0;
             for (int i = 0; i < 3; i++) {
                 if (board.getGameField(i, 2 - i) == 'X') {
@@ -257,12 +253,20 @@ public class GameActionListener implements ActionListener {
             }
             if (isTurnDone == 1) break;
 
-            //случайный ход
-            if (isTurnDone == 1) break;
-            x = rnd.nextInt(GameBoard.dimension);
-            y = rnd.nextInt(GameBoard.dimension);
-            break;
-
+            //ход в угол
+            if (board.getGameField(0, 0) == GameBoard.getNullSymbol()) {
+                x = 0;
+                y = 0;
+                break;
+            } else if (board.getGameField(0, 2) == GameBoard.getNullSymbol()) {
+                x = 0;
+                y = 2;
+                break;
+            } else if (board.getGameField(2, 2) == GameBoard.getNullSymbol()) {
+                x = 2;
+                y = 2;
+                break;
+            }
         }
 
         turnCoords[0] = x;
