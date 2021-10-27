@@ -9,6 +9,7 @@ public class GameActionListener implements ActionListener {
     private int row;
     private int cell;
     private GameButton button;
+    private static int COUNTER = 0;
 
     public GameActionListener(int row, int cell, GameButton gButton) {
         this.row = row;
@@ -52,7 +53,7 @@ public class GameActionListener implements ActionListener {
                 x = getTurnCoords(board)[0];
                 y = getTurnCoords(board)[1];
             } while (!board.isTurnable(x, y));
-
+            System.out.println(x + " " + y);
             board.updateGameField(x, y);
             int cellIndex = GameBoard.dimension * x + y;
             board.getButton(cellIndex).setText(Character.toString(board.getGame().getCurrentPlayer().getPlayerSign()));
@@ -61,11 +62,14 @@ public class GameActionListener implements ActionListener {
                 button.getBoard().getGame().showMessage("Компьютер выиграл!");
                 board.getGame().passTurn();
                 board.emptyField();
-
             } else {
                 board.getGame().passTurn();
             }
         }
+    }
+
+    public static void setZeroCOUNTER() {
+        COUNTER = 0;
     }
 
     private int[] getTurnCoords(GameBoard board) {
@@ -74,7 +78,6 @@ public class GameActionListener implements ActionListener {
         int[] turnCoords = new int[2];
         Random rnd = new Random();
         while (true) {
-
             //ход в центр
             if (board.getGameField(1, 1) == GameBoard.getNullSymbol()) {
                 x = 1;
@@ -255,8 +258,8 @@ public class GameActionListener implements ActionListener {
 
             //ход в угол
             if (board.getGameField(0, 0) == GameBoard.getNullSymbol()) {
-                x = 0;
-                y = 0;
+                x = rnd.nextInt(GameBoard.dimension);
+                y = rnd.nextInt(GameBoard.dimension);
                 break;
             } else if (board.getGameField(0, 2) == GameBoard.getNullSymbol()) {
                 x = 0;

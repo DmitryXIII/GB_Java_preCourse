@@ -72,6 +72,7 @@ public class GameBoard extends JFrame {
             int y = i % GameBoard.dimension;
 
             gameField[x][y] = nullSymbol;
+            GameActionListener.setZeroCOUNTER();
         }
     }
 
