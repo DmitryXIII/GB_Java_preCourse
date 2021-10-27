@@ -6,6 +6,12 @@ public class Game {
     private GameBoard board;
     private GamePlayer[] gamePlayers = new GamePlayer[2];
     private int playersTurn = 0;
+    private static boolean HARD_MODE = true;
+
+
+    public static boolean getHARD_MODE() {
+        return HARD_MODE;
+    }
 
     public Game() {
         this.board = new GameBoard(this);

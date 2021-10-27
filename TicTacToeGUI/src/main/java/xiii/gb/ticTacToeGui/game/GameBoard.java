@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 public class GameBoard extends JFrame {
     static int dimension = 3;
-    static int cellSize = 150;
+    static int cellSize = 100;
     private char[][] gameField;
     private GameButton[] gameButtons;
 
@@ -26,7 +26,7 @@ public class GameBoard extends JFrame {
     }
 
     private void initField() {
-        setBounds(cellSize * dimension, cellSize * dimension, 400, 300);
+        setBounds(cellSize * dimension, cellSize * dimension, 400, 400);
         setTitle("Крестики-нолики");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,7 +72,6 @@ public class GameBoard extends JFrame {
             int y = i % GameBoard.dimension;
 
             gameField[x][y] = nullSymbol;
-            GameActionListener.setZeroCOUNTER();
         }
     }
 
